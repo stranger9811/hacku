@@ -26,7 +26,7 @@ class DemoController < ApplicationController
       require 'google/api_client'
       
       itunes_limit=2
-      artist_limit=5
+      artist_limit=2
       music_limit="3"
       developer_key = "AIzaSyBLkCKyf8cM6Hzxe3r19kmmR0gh7MTidH4"
       api_service = "youtube"
@@ -175,7 +175,7 @@ class DemoController < ApplicationController
     def index
         #access_token_hash = MiniFB.oauth_access_token('204212613074016', "http://rocky-ravine-5583.herokuapp.com",  'b4653e6a3fecb75fc9909336f44b25a6', params[:code])
         #$access_token = access_token_hash["access_token"]
-        friend_limit="100"
+        friend_limit="20"
         $access_token = "CAACEdEose0cBAK8SVne4yHAV6Y1gpmNcX1KNlcsZCG9zsjy8GADHnbjwOPEVcwnP03TF3jIQANCATloZA38jCrFZBGQjUxFunNiqciPRPPFsF27mXhI6E1MzpYvMCGEeB7pw77lVbclVTln0hAQ8YSwJ3eoCSDgwqV44cSgZAIZCklSJFmP8eqTXnmvQPFeUQGOi5MVbOYgZDZD"
         $graph=Koala::Facebook::API.new($access_token)
         $user=$graph.get_object("me")
