@@ -1,7 +1,7 @@
 class DemoController < ApplicationController
     def home
       @oauth_url = MiniFB.oauth_url('199535680199935', # your Facebook App ID (NOT API_KEY)
-                                    "http://hacku.herokuapp.com/demo/index", # redirect url
+                                    "http://mainwebpage.herokuapp.com/demo/index", # redirect url
                                     :scope=>MiniFB.scopes.join(","))
     
     end
@@ -173,10 +173,10 @@ class DemoController < ApplicationController
       
     end
     def index
-        access_token_hash = MiniFB.oauth_access_token('204212613074016', "http://calm-crag-3621.herokuapp.com",  'b4653e6a3fecb75fc9909336f44b25a6', params[:code])
+        access_token_hash = MiniFB.oauth_access_token('204212613074016', "http://mainwebpage.herokuapp.com",  'b4653e6a3fecb75fc9909336f44b25a6', params[:code])
         $access_token = access_token_hash["access_token"]
         friend_limit="100"
-        $access_token = "CAACEdEose0cBAFaxgkEgMzc3m7c7k4ZA9LDiidaXWmI8Jm9bricfz8GflTDsdQf8j7yIrrvZBBbvmfzgmLRdPidPScl5s4Mc264dw2ny7kFyBjNfP8ZBB970Qbz5ReymqJuPjChgnyhy6CcIzCYUF7j0HgGH6oZD"
+        #$access_token = "CAACEdEose0cBAFaxgkEgMzc3m7c7k4ZA9LDiidaXWmI8Jm9bricfz8GflTDsdQf8j7yIrrvZBBbvmfzgmLRdPidPScl5s4Mc264dw2ny7kFyBjNfP8ZBB970Qbz5ReymqJuPjChgnyhy6CcIzCYUF7j0HgGH6oZD"
         $graph=Koala::Facebook::API.new($access_token)
         $user=$graph.get_object("me")
         $party=Party.create(:party_admin=>$user["name"])
