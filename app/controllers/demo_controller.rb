@@ -173,10 +173,10 @@ class DemoController < ApplicationController
       
     end
     def index
-        access_token_hash = MiniFB.oauth_access_token('204212613074016', "http://agile-journey-7236.herokuapp.com",  'b4653e6a3fecb75fc9909336f44b25a6', params[:code])
-        $access_token = access_token_hash["access_token"]
+        #access_token_hash = MiniFB.oauth_access_token('204212613074016', "http://agile-journey-7236.herokuapp.com",  'b4653e6a3fecb75fc9909336f44b25a6', params[:code])
+        #$access_token = access_token_hash["access_token"]
         friend_limit="100"
-        #$access_token = "CAACEdEose0cBAFaxgkEgMzc3m7c7k4ZA9LDiidaXWmI8Jm9bricfz8GflTDsdQf8j7yIrrvZBBbvmfzgmLRdPidPScl5s4Mc264dw2ny7kFyBjNfP8ZBB970Qbz5ReymqJuPjChgnyhy6CcIzCYUF7j0HgGH6oZD"
+        $access_token = "CAACEdEose0cBAK8SVne4yHAV6Y1gpmNcX1KNlcsZCG9zsjy8GADHnbjwOPEVcwnP03TF3jIQANCATloZA38jCrFZBGQjUxFunNiqciPRPPFsF27mXhI6E1MzpYvMCGEeB7pw77lVbclVTln0hAQ8YSwJ3eoCSDgwqV44cSgZAIZCklSJFmP8eqTXnmvQPFeUQGOi5MVbOYgZDZD"
         $graph=Koala::Facebook::API.new($access_token)
         $user=$graph.get_object("me")
         $party=Party.create(:party_admin=>$user["name"])
