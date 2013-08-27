@@ -1,7 +1,7 @@
 class DemoController < ApplicationController
     def home
       @oauth_url = MiniFB.oauth_url('199535680199935', # your Facebook App ID (NOT API_KEY)
-                                    "http://agile-journey-7236.herokuapp.com/demo/index", # redirect url
+                                    "http://rocky-ravine-5583.herokuapp.com/demo/index", # redirect url
                                     :scope=>MiniFB.scopes.join(","))
     
     end
@@ -173,7 +173,7 @@ class DemoController < ApplicationController
       
     end
     def index
-        #access_token_hash = MiniFB.oauth_access_token('204212613074016', "http://agile-journey-7236.herokuapp.com",  'b4653e6a3fecb75fc9909336f44b25a6', params[:code])
+        #access_token_hash = MiniFB.oauth_access_token('204212613074016', "http://rocky-ravine-5583.herokuapp.com",  'b4653e6a3fecb75fc9909336f44b25a6', params[:code])
         #$access_token = access_token_hash["access_token"]
         friend_limit="100"
         $access_token = "CAACEdEose0cBAK8SVne4yHAV6Y1gpmNcX1KNlcsZCG9zsjy8GADHnbjwOPEVcwnP03TF3jIQANCATloZA38jCrFZBGQjUxFunNiqciPRPPFsF27mXhI6E1MzpYvMCGEeB7pw77lVbclVTln0hAQ8YSwJ3eoCSDgwqV44cSgZAIZCklSJFmP8eqTXnmvQPFeUQGOi5MVbOYgZDZD"
@@ -183,18 +183,18 @@ class DemoController < ApplicationController
         cookies[:party_id]=$party.id
         cookies[:user_email] = $user["username"]+"@sendgrid.me"
        
-        $name_list=Hash.new
+        @name_list=Hash.new
         @id_list=[]
-        $profile_pic_list=Hash.new()
+        @profile_pic_list=Hash.new()
 
         profile_pic = $graph.get_object("me/friends?fields=picture,name&limit="+friend_limit)
         
 
         for friend in profile_pic
-          $profile_pic_list[friend["id"]]=friend["picture"]["data"]["url"]
+          @profile_pic_list[friend["id"]]=friend["picture"]["data"]["url"]
           @id_list.push(friend["id"])
-          $name_list[friend["id"]]=friend["name"]
+          @name_list[friend["id"]]=friend["name"]
         end
-        $name_list =  $name_list.sort_by {|a,b| b}
+        @name_list =  @name_list.sort_by {|a,b| b}
     end
 end
