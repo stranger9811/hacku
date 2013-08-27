@@ -15,11 +15,11 @@
 
 	<%= form_tag "/demo/main" do %>
 	<div class="row">
-		<% for name in $name_list%>
+		<% for name in @name_list%>
 			<div style="float:left; margin-top:2%;" class="col-md-4">
  		   	 	
 					<%= check_box_tag "user_comming "+ name[0],name[0], false %>
-	 		 	   <%= image_tag($profile_pic_list[name[0]], :size => 36*25) %>
+	 		 	   <%= image_tag(@profile_pic_list[name[0]], :size => 36*25) %>
  				
  		   	 	
 			   	 	<%= name[1]%> 
