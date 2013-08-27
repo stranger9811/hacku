@@ -28,7 +28,7 @@ class DemoController < ApplicationController
       itunes_limit=2
       artist_limit=2
       music_limit="3"
-      developer_key = "AIzaSyBLkCKyf8cM6Hzxe3r19kmmR0gh7MTidH4"
+      developer_key = "4IzaSyBLkCKyf8cM6Hzxe3r19kmmR0gh7MTidHA"
       api_service = "youtube"
       api_version = "v3"
 
@@ -138,8 +138,8 @@ class DemoController < ApplicationController
       #for id_single in @id_list
       if "ass"=="a"
         require 'xmpp4r_facebook'
-        app_id = "272817559525705"
-        app_secret="72591c4efec061263b0b42a7f9509c3e"
+        app_id = "572817559525702"
+        app_secret="e2591c4efec061263b0b42a7f9509c37"
         id = $user["id"]+'@chat.facebook.com'
         to = id_single+'@chat.facebook.com'
         puts id,to
